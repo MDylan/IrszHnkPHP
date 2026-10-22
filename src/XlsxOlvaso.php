@@ -39,9 +39,16 @@ final class XlsxOlvaso
         {
             public function __construct(private readonly int $utolsoOszlop) {}
 
-            public function readCell(string $columnAddress, int $row, string $worksheetName = ''): bool
+            /**
+             * Típus nélküli paraméterek: a PhpSpreadsheet 1.x interfészében sincs típus (így mindkét főverzióval megy).
+             *
+             * @param  string  $columnAddress
+             * @param  int  $row
+             * @param  string  $worksheetName
+             */
+            public function readCell($columnAddress, $row, $worksheetName = ''): bool
             {
-                return Coordinate::columnIndexFromString($columnAddress) <= $this->utolsoOszlop;
+                return Coordinate::columnIndexFromString((string) $columnAddress) <= $this->utolsoOszlop;
             }
         });
 

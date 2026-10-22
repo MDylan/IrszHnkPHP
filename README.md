@@ -43,7 +43,8 @@ Az eredetivel bájtra azonos kimenethez a csomag az R viselkedését is követi,
 composer install
 ```
 
-PHP 8.3, `intl`, `mbstring`, `zip`, `xml` bővítmény; függőség: `phpoffice/phpspreadsheet`.
+PHP 8.3, `intl`, `mbstring`, `zip`, `xml` bővítmény; függőség: `phpoffice/phpspreadsheet` 1.30+ vagy 5.10+ (mindkettővel
+tesztelve; az 1.x-et pl. a `maatwebsite/excel` 3.1 köti ki).
 
 ## Használat
 
