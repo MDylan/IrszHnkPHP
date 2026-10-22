@@ -1,3 +1,10 @@
 # A tesztadatok bájtra pontosan kellenek (CRLF, BOM): a git ne alakítsa át őket
 tests/fixtures/** -text
 *.xlsx binary
+
+# A Composer letöltési csomagjába (git archive) csak a futáshoz kellő fájlok kerüljenek
+/tests export-ignore
+/phpunit.xml export-ignore
+/composer.lock export-ignore
+/.gitattributes export-ignore
+/.gitignore export-ignore
