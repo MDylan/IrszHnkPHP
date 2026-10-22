@@ -1,0 +1,3 @@
+# A tesztadatok bájtra pontosan kellenek (CRLF, BOM): a git ne alakítsa át őket
+tests/fixtures/** -text
+*.xlsx binary

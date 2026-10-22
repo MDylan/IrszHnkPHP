@@ -1,0 +1,51 @@
+#!/usr/bin/env php
+<?php
+
+declare(strict_types=1);
+
+/*
+ * Irányítószámok és települések összerendelése (IrszHnk), parancssorból.
+ *
+ *   bin/irszhnk [--posta=FÁJL|URL] [--ksh=FÁJL|URL] [--kimenet=MAPPA] [--lf]
+ *
+ * Alapból letölti a Posta és a KSH aktuális fájlját (az eredeti szkript URL-jei), és az IrszHnk.csv / IrszHnk.json
+ * fájlt a kimeneti mappába (alapból az aktuális mappa) menti. --lf: a CSV sorvége LF (alapból CRLF, mint az eredeti).
+ */
+
+use IrszHnk\IrszHnk;
+use IrszHnk\Kimenet;
+use IrszHnk\Letolto;
+
+foreach ([__DIR__.'/../vendor/autoload.php', __DIR__.'/../../../autoload.php'] as $autoload) {
+    if (is_file($autoload)) {
+        require $autoload;
+        break;
+    }
+}
+
+$opciok = getopt('h', ['posta:', 'ksh:', 'kimenet:', 'lf', 'help']);
+
+if (isset($opciok['h']) || isset($opciok['help'])) {
+    fwrite(STDOUT, "Használat: bin/irszhnk [--posta=FÁJL|URL] [--ksh=FÁJL|URL] [--kimenet=MAPPA] [--lf]\n");
+    exit(0);
+}
+
+$letolto = new Letolto;
+
+try {
+    $posta = $letolto->fajl((string) ($opciok['posta'] ?? IrszHnk::POSTA_URL));
+    $ksh = $letolto->fajl((string) ($opciok['ksh'] ?? IrszHnk::KSH_URL));
+
+    $tablazat = IrszHnk::fajlokbol($posta, $ksh);
+    $fajlok = Kimenet::ment($tablazat, (string) ($opciok['kimenet'] ?? getcwd()), isset($opciok['lf']) ? "\n" : "\r\n");
+
+    fwrite(STDOUT, count($tablazat->sorok)." sor\n".implode("\n", $fajlok)."\n");
+    $kod = 0;
+} catch (Throwable $e) {
+    fwrite(STDERR, 'Hiba: '.$e->getMessage()."\n");
+    $kod = 1;
+} finally {
+    $letolto->torol();
+}
+
+exit($kod);
