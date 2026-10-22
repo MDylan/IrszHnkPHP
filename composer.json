@@ -1,0 +1,37 @@
+{
+    "name": "mdylan/irszhnk-php",
+    "description": "Magyar irányítószámok és települések összerendelése (Posta + KSH Helységnévtár), Ferenci Tamás IrszHnk R-szkriptjének PHP-átirata",
+    "type": "library",
+    "require": {
+        "php": "^8.3",
+        "ext-intl": "*",
+        "ext-mbstring": "*",
+        "phpoffice/phpspreadsheet": "^5.10"
+    },
+    "autoload": {
+        "psr-4": {
+            "IrszHnk\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "IrszHnk\\Tests\\": "tests/"
+        }
+    },
+    "bin": [
+        "bin/irszhnk"
+    ],
+    "scripts": {
+        "test": "pest"
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "minimum-stability": "stable",
+    "require-dev": {
+        "pestphp/pest": "^4.7"
+    }
+}

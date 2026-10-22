@@ -1,0 +1,4 @@
+/vendor/
+/.phpunit.cache/
+/kimenet/
+.phpunit.result.cache
