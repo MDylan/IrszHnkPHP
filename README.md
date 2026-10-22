@@ -10,11 +10,12 @@ Magyar irányítószámok és települések összerendelése, a települések ad
 Ez a csomag **Ferenci Tamás** ([medstat.hu](https://www.medstat.hu/)) [IrszHnk](https://github.com/ferenci-tamas/IrszHnk)
 R-szkriptjének PHP-átirata. Az összerendelés módja, a transzformációk és a kimenet alakja az övé; ez a csomag
 ugyanazt csinálja PHP-ban, Laravel és R nélkül. Az eredeti repó README-je a két forrás eltéréseiről is ír (a
-Helységnévtár irányítószámai nem teljesen egyeznek a Postáéval), érdemes elolvasni.
+Helységnévtár irányítószámai nem teljesen egyeznek a Postáéval), érdemes elolvasni. Az átirat az eredeti szerző,
+Ferenci Tamás engedélyével készült.
 
 ## Licenc
 
-Még nincs megadva. Az eredeti repónak sincs licencfájlja.
+MIT, lásd a [LICENSE](LICENSE) fájlt.
 
 ## Mit csinál
 
