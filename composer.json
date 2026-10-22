@@ -6,7 +6,7 @@
         "php": "^8.3",
         "ext-intl": "*",
         "ext-mbstring": "*",
-        "phpoffice/phpspreadsheet": "^5.10"
+        "phpoffice/phpspreadsheet": "^1.30 || ^5.10"
     },
     "autoload": {
         "psr-4": {
